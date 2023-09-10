@@ -229,3 +229,8 @@
     width: 100%;
     shape-image-threshold: inherit;
 }
+.rangetab{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+}
