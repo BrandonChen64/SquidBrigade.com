@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Squid Brigade</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar">
+            <a href="index.html"><img src="images/homeicon.png" alt="Home" draggable="false"></a>
+            <div class = "tab">
+                <ul>
+                    <li><a href="weapons.html"><img src="images/weaponsicon.png" alt="Weapons" draggable="false"></a></li>
+                    <li><a href="items.html"><img src="images/itemsicon.png" alt="Items" draggable="false"></a></li>
+                    <li><a href="terrain.html"><img src="images/terrainicon.png" alt="Terrain" draggable="false"></a></li>
+                    <li><a href="enemies.html"><img src="images/enemiesicon.png" alt="Enemies" draggable="false"></a></li>
+                    <li><a><img src="images/searchicon.png" alt="Search Icon" draggable="false"></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="page">
+            <div class="background"></div>
+            <div class="head">
+                <h1>Squid Brigade</h1>
+            </div>
+            <div class="homesearch">
+                <div class="searchbar">
+                    <img src="images/searchicon.png" alt="Search Icon" draggable="false">
+                    <input type="text" id="searchbarinput" placeholder="Search" oninput="updatesearchbox()" onfocus="highlightText()" onkeydown="selectBestLink(event)">
+                </div>
+                <div class="suggestionlist" id="searchbox">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const allSearchable = ["Sword","Bow","Staff","Spear","Mace","Orb","Wand","Shield","Flag","Pendant","Amulet","Charm","Grimoire","Kunai","Chalice"]
+        function updatesearchbox(){
+            let matches = [];
+            const searchBoxElement = document.getElementById("searchbox");
+            const searchBarElement = document.getElementById("searchbarinput");
+            searchBoxElement.innerHTML = '';
+            for(let i = 0; i < allSearchable.length; i++){
+                if(allSearchable[i].toLowerCase().indexOf(searchBarElement.value.toLowerCase()) === 0 && searchBarElement.value.length > 0 && searchBarElement.value.length <= searchBarElement.value.length){
+                    let score = allSearchable[i].length - searchBarElement.value.length;
+                    matches.push([score, allSearchable[i]]);
+                }
+                else if(allSearchable[i].toLowerCase().indexOf(searchBarElement.value.toLowerCase()) > 0 && searchBarElement.value.length > 0 && searchBarElement.value.length <= searchBarElement.value.length){
+                    let score = allSearchable[i].length - searchBarElement.value.length + 10;
+                    matches.push([score, allSearchable[i]]);
+                }
+                else{
+                    let word = allSearchable[i];
+                    let score = 0;
+                    let isMatch = false;
+                    for(let j = 0; j < 64 && j < searchBarElement.value.length -1; j++){
+                        if(word.toLowerCase().indexOf(searchBarElement.value[j].toLowerCase() + searchBarElement.value[j + 1].toLowerCase()) >= 0){
+                            word.replace(searchBarElement.value[j],'');
+                            isMatch = true;
+                            score += 3;
+
+                        }
+                    }
+                    for(let j = 0; j < 64 && j < searchBarElement.value.length; j++){
+                        if(word.toLowerCase().indexOf(searchBarElement.value[j].toLowerCase()) >= 0){
+                            word.replace(searchBarElement.value[j],'');
+                            isMatch = true;
+                            score += 1;
+                        }
+                    }
+                    score = 100 - score * 2 + Math.abs(searchBarElement.value.length - allSearchable[i].length) * 3;
+                    if(isMatch && score < 99){
+                        matches.push([score, allSearchable[i]]);
+                    }
+                }
+            }
+            matches.sort(function(a,b){return a[0] - b[0]});
+            addToSuggestion(matches, searchBoxElement);
+        }
+
+        function addToSuggestion(matches, element){
+            for(let i = 0; i < matches.length; i++){
+                const addDiv = document.createElement("div");
+                const addElement = document.createElement("a");
+                const addPicture = document.createElement("img");
+                addDiv.textContent = matches[i][1];
+                addElement.href = matches[i][1] + ".html";
+                addPicture.className = "mainsearchimage";
+                addPicture.src = "images/" + matches[i][1].toLowerCase() + "icon.png"
+                addElement.appendChild(addPicture);
+                addElement.appendChild(addDiv);
+                element.appendChild(addElement);
+            }
+        }
+        function highlightText(){
+            const searchBarElement = document.getElementById("searchbarinput");
+            searchBarElement.select();
+        }
+
+        function selectBestLink(event){
+            if(event.key === "Enter"){
+                const list = document.getElementById("searchbox");
+                window.location.href = list.querySelector("a").href;
+            }
+        }
+    </script>
+</body>
+</html>

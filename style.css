@@ -1,0 +1,231 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Oxygen', sans-serif;
+}
+.main{
+    position: relative;
+}
+.navbar{
+    display: flex;
+    height: 64px;
+    padding: 8px;
+    margin: 0;
+    border: 0 outset black;
+    background-color: black;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+.navbar ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
+}
+.navbar li{
+    display: inline;
+    margin-left: 8px
+}
+.navbar a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 0;
+    margin: 0;
+    padding: 0;
+}
+.navbar img{
+    padding: 4px;
+    width: 56px;
+    height: 56px;
+}
+.tab{
+    border: 0 outset black;
+    flex: 1;
+    text-align: right;
+    background: transparent;
+}
+.navbar img:hover{
+    color: white;
+    background-color: rgba(255,255,255,0);
+    width: 64px;
+    height: 64px;
+    padding: 0;
+}
+.page{
+    position: static;
+    margin: 0;
+    padding: 0;
+}
+.background{
+    min-height: 100vh;
+    width: 100%;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0)), url(images/background.png);
+    background-position: center;
+    background-size: cover;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.title{
+    text-align: center;
+    color: white;
+    font-size: 32px;
+    position: absolute;
+    left: 50%;
+    Transform: translate(-50%);
+}
+.head{
+
+}
+.head h1{
+    display: block;
+    text-align: center;
+    color: white;
+    font-size: 112px;
+    position: static;
+    top: 128px;
+}
+.head h2{
+    display: block;
+    text-align: center;
+    color: white;
+    font-size: 80px;
+    position: static;
+    top: 128px;
+}
+.weaponhead{
+    padding: 2%;
+    margin: 0;
+    display: block;
+    text-align: center;
+    color: white;
+    font-size: 64px;
+    position: static;
+    width: 56%;
+    float: left;
+}
+.homesearch{
+    margin: 32px auto auto;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    color: white;
+    height: 80px;
+    border-width: 2px;
+    border-color: white;
+    width: 810px;
+}
+.searchbar{
+    width: 584px;
+    display: flex;
+    border: solid white 8px;
+    border-radius: 16px;
+}
+.searchbar img{
+    margin: 2px;
+    width: 80px;
+    height: 80px;
+}
+.searchbar input{
+    padding-left: 8px;
+    color: lightgray;
+    font-size: 64px;
+    margin: 2px;
+    height: 80px;
+    background: transparent;
+    border: none;
+    outline: none;
+    width: 512px;
+}
+.suggestionlist{
+    overflow: auto;
+    font-size: 48px;
+    flex-basis: 600px;
+    max-height: 360px;
+    background: rgba(255, 255, 255, .1);
+    border: hidden white 8px;
+    border-radius: 16px;
+}
+.suggestionlist a{
+    margin: 0 2px 2px;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    height: 80px;
+}
+.suggestionlist a:hover{
+    background: rgba(255, 255, 255, 0);
+    font-size: 52px;
+}
+.suggestionlist a:hover img.mainsearchimage{
+    padding: 0;
+    width: 80px;
+    height: 80px;
+}
+.suggestionlist a:hover div{
+    padding-top: 6px;
+}
+.suggestionlist div{
+    padding-top: 8px;
+    height: 72px;
+}
+.suggestionlist img{
+    padding: 8px;
+    width: 64px;
+    height: 64px;
+}
+.suggestionlist::-webkit-scrollbar{
+    width: 0;
+}
+.content{
+    margin: 32px auto auto;
+    display: flex;
+    justify-content: center;
+}
+.content ul{
+    list-style-type: none;
+    display: grid;
+    margin: 0;
+    justify-content: center;
+    grid-template-columns: repeat(5, 1fr);
+    height: 576px;
+    width: 800px;
+    overflow: auto;
+}
+.content ul::-webkit-scrollbar{
+    width: 0;
+}
+.content li{
+    height: 128px;
+    width: 128px;
+    margin: 16px;
+}
+.content img{
+    display: flex;
+    text-align: center;
+    height: 128px;
+    width: 128px;
+}
+.weapondiagram{
+    margin: 0;
+    padding: 2%;
+    display: inline;
+    position: static;
+    text-align: right;
+    background: none;
+    width: 36%;
+    float: right;
+    font-size: 0;
+}
+.weapondiagram img{
+    width: 100%;
+    shape-image-threshold: inherit;
+}

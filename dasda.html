@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* Style for the triggering element */
+        .trigger:hover {
+            /* Define the styles you want on hover */
+            color: red;
+        }
+
+        /* Style for the element to change when hovering over the trigger */
+        .trigger:hover + .target {
+            /* Define the styles you want to apply to the target element */
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+<h1>JavaScript Arrays</h1>
+<h2>The sort() Method</h2>
+
+<p>Sort the array in descending order:</p>
+
+<p id="demo1"></p>
+<p id="demo2"></p>
+
+<script>
+    const arrayOfTuples = [
+        [341, "Apple"],
+        [5672, "Banana"],
+        [234, "Cherry"],
+        [345, "Date"],
+    ];
+    arrayOfTuples.sort((a, b) => a[0] - b[0]);
+    // Iterate through the array and print all the strings
+    for (const tuple of arrayOfTuples) {
+        const [, string] = tuple; // Destructure the tuple to get the string
+        console.log(string);
+    }
+</script>
+
+</body>
+</html>
+let isGoodMatch = false;
+let isPoorMatch = 0;
+if(allSearchable[i].toLowerCase().indexOf(searchBarElement.value.toLowerCase()) === 0 && searchBarElement.value.length > 0 && searchBarElement.value.length <= allSearchable[i]){
+let currScore = (allSearchable[i].length - searchBarElement.value.length).abs;
+position++;
+isGoodMatch = true;
+if(currScore < score){
+best = i;
+currPosition = position;
+}
+
+}
+else if(allSearchable[i].toLowerCase().indexOf(searchBarElement.value.toLowerCase()) > 0 && searchBarElement.value.length > 0 && searchBarElement.value.length <= allSearchable[i]){
+let currScore = (allSearchable[i].length - searchBarElement.value.length).abs + 10;
+position++;
+isGoodMatch = true;
+if(currScore < score){
+best = i;
+currPosition = position;
+score = currScore;
+}
+}
+else{
+for(let j = 0; j < 64 && j < searchBarElement.value.length; j++){
+if(allSearchable[i].toLowerCase().indexOf(searchBarElement.value[j].toLowerCase()) > 0){
+isPoorMatch++;
+}
+}
+}
+if(isGoodMatch){
+goodMatches.push(allSearchable[i]);
+}
+if(isPoorMatch > searchBarElement.value.length/2){
+poorMatches.push(allSearchable[i]);
+}
+goodMatches.
